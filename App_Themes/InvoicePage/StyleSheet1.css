@@ -1,0 +1,195 @@
+﻿.clsAddInvoice {
+    justify-content: center;
+    text-align: center;
+    margin-top:80px;
+}
+.addInvoceMsglbl {
+    text-align: center;
+}
+.invoiceAddLbl {
+    font-size: 35px;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 80px;
+}
+.validateClass{
+    font-size:15px;
+    color:red;
+}
+.addMainCls {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    font-size: 25px;
+    padding: 15px 15px;
+    line-height: 50px;
+    margin-right: 15px;
+   
+}
+
+.addMainCls2 {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    font-size: 25px;
+    padding: 15px 15px;
+    line-height: 25px;
+    margin-right: 40px;
+}
+
+.addMainCls3 {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    font-size: 25px;
+    padding: 15px 15px;
+    line-height: 30px;
+    margin-right: 25px;
+}
+.addMainCls4 {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    font-size: 25px;
+    padding: 15px 15px;
+    line-height: 30px;
+    margin-left: 15px;
+}
+
+.partyLableCls {
+    margin-right: 15px;
+}
+
+.productLableCls {
+    margin-right: 15px;
+}
+
+.currentRateLableCls {
+    margin-right: 15px;
+}
+
+.quantityLableCls {
+    margin-right: 15px;
+}
+.AssignParty {
+    border: solid black;
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+    color: lightslategrey;
+    cursor: pointer;
+}
+
+:focus.AssignParty {
+    border: solid #59a6e8;
+}
+
+.AssignProduct {
+    border: solid black;
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+    color: lightslategrey;
+    cursor: pointer;
+}
+
+:focus.AssignProduct {
+    border: solid #59a6e8;
+}
+
+.currentRate {
+    border: solid black;
+    width: 190px;
+    height: 25px;
+    font-size: 20px;
+    color: lightslategrey;
+    cursor: pointer;
+}
+
+:focus.currentRate {
+    border: solid #59a6e8;
+}
+
+.quantity {
+    border: solid black;
+    width: 190px;
+    height: 25px;
+    font-size: 20px;
+    color: lightslategrey;
+    cursor: pointer;
+}
+
+:focus.quantity {
+    border: solid #59a6e8;
+}
+
+
+
+.assignInvoiceAddBtns {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    margin:20px 0 0 0;
+}
+
+.addToInvoiceBtn {
+    width: 130px;
+    height: 40px;
+    background-color: #449d44;
+    color: white;
+    border-color: #327c39;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+:hover.addToInvoiceBtn {
+    background-color: #327c39;
+}
+
+.grandTtlLbl{
+    display:flex;
+    justify-content:right;
+    margin-right:70px;
+    padding-bottom:50px;
+}
+.grandTotolLblCls{
+    font-weight:bold;
+    font-size:20px;
+}
+.grandValueCls{
+    font-size:20px;
+}
+.assignInvoiceCloseBtns {
+    width: auto;
+    display: flex;
+    justify-content: right;
+    margin-right: 130px;
+}
+.cLoseToInvoiceBtn {
+    width: 130px;
+    height: 40px;
+    border: none;
+    background-color: #d9534f;
+    color: white;
+    border-color: #d43f3a;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+:hover.cLoseToInvoiceBtn {
+    border: solid 2px black;
+}
+
+.invoiceGridView {
+    margin: 80px 0 0 0;
+    display: flex;
+    justify-content: center;
+    line-height: 40px;
+    width: 100%;
+}
+
+.gridCls {
+    width: 1000px;
+}

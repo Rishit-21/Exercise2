@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Exercise2.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+     <link href="masterStyleSheet.css" rel="stylesheet" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+       
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+       
+            <div class="header">
+                <div class="HomeDiv" >
+                <asp:HyperLink CssClass="tab" ID="hometb" runat="server" NavigateUrl="~/Party/Party.aspx">Invoice Module</asp:HyperLink>
+                </div>
+                <div class="OtherLinkDiv">
+                   
+                    <asp:HyperLink CssClass="tab" ID="partyTb" runat="server" NavigateUrl="~/Party/Party.aspx">Party</asp:HyperLink>
+              
+                     <asp:HyperLink CssClass="tab" ID="productsTb" runat="server" NavigateUrl="~/Product/Products.aspx">Products</asp:HyperLink>
+               
+                     <asp:HyperLink  CssClass="tab" ID="assignPartyTb" runat="server" NavigateUrl="~/AssignParty/assignParty.aspx" >AssignParty</asp:HyperLink>
+                  
+                     <asp:HyperLink CssClass="tab" ID="prouctTb" runat="server" NavigateUrl="~/ProductRateListFldr/productRateList.aspx">Product Rate</asp:HyperLink>
+                  
+                     <asp:HyperLink CssClass="tab" ID="invoiceTb" runat="server" NavigateUrl="~/Invoice/addInvoice.aspx">Invoice</asp:HyperLink>
+                  
+                </div>
+            </div>
+        
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

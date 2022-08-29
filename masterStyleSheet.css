@@ -1,0 +1,27 @@
+﻿
+
+.header {
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    position:fixed;
+    top:0;
+   
+}
+.tab {
+    text-decoration: none;
+    color: #9d9d9d;
+    height: 20px;
+    padding: 15px 15px;
+    line-height: 38px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.active{
+    color:white;
+}
+:hover.tab{
+    color:white;
+}
