@@ -42,14 +42,10 @@ namespace Exercise2
                     ProductAddMsg.Text = "Product Name is repeated";
                     ProductAddMsg.ForeColor = System.Drawing.Color.Red;
                 }
-
-
-
-
-                
             }
             catch 
             {
+                con.Close();
                 try
                 {
                     con = new SqlConnection("data source=.\\SQLEXPRESS;database=partyProduct; integrated security=SSPI");
@@ -87,9 +83,11 @@ namespace Exercise2
                     ProductAddMsg.Text = "Product Name is repeated";
                     ProductAddMsg.ForeColor = System.Drawing.Color.Red;
                 }
+               
             }
             catch 
             {
+                con.Close();
                 try
                 {
                     SqlCommand scm = new SqlCommand("update product set productName='" + addProductTxt.Text + "'where id = " + Request.QueryString["id"] + "", con);

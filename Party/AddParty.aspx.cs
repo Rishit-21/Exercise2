@@ -47,14 +47,10 @@ namespace Exercise2
                     PartyAddMsg.ForeColor = System.Drawing.Color.Red;
 
                 }
-               
-                
-                
-
-
             }
             catch 
             {
+                con.Close();
                 try
                 {
                     SqlCommand sde = new SqlCommand("update party set partyName='" + addPartyTxt.Text + "'where id =" + Request.QueryString["id"], con);
@@ -94,10 +90,7 @@ namespace Exercise2
                     PartyAddMsg.Text = "Party Name is repeated";
                     PartyAddMsg.ForeColor = System.Drawing.Color.Red;
                 }
-                
-            
-
-                
+                con.Close();  
             }
             catch
             {
