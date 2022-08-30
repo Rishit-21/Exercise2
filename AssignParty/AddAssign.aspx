@@ -13,7 +13,7 @@
         <asp:Label CssClass="partyNam" ID="PartyName" runat="server" Text="Party Name: "></asp:Label>
         </div>
         <div class="partyDrpCls">
-            <asp:DropDownList CssClass="AssignParty" ID="AssignPartyDrp" runat="server">
+            <asp:DropDownList CssClass="AssignParty" ID="AssignPartyDrp" runat="server"  AutoPostBack="true" OnSelectedIndexChanged="AssignPartyDrp_SelectedIndexChanged" >
                <asp:ListItem Value="SelectParty" >Select Party</asp:ListItem>
             </asp:DropDownList>
            

@@ -11,7 +11,7 @@ namespace Exercise2.Assign_Party
 {
     public partial class AddAssign : System.Web.UI.Page
     {
-      public  string CS = ConfigurationManager.ConnectionStrings["partyProduct"].ConnectionString;
+        public string CS = ConfigurationManager.ConnectionStrings["partyProduct"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -46,14 +46,14 @@ namespace Exercise2.Assign_Party
                     AssignProductDrp.Items.Insert(0, new ListItem("Select Party", "0"));
 
                 }
-                catch(Exception em)
+                catch (Exception em)
                 {
                     Label2.Text = em.Message;
                     Label2.ForeColor = System.Drawing.Color.Red;
                 }
                 finally
                 {
-                con.Close();
+                    con.Close();
                 }
 
                 if (Request.QueryString["id"] != null)
@@ -77,26 +77,26 @@ namespace Exercise2.Assign_Party
                     }
                     finally
                     {
-                    con.Close();
+                        con.Close();
                     }
                     try
                     {
-                    string com3 = "select partyId from assignProduct where assignId=" + Request.QueryString["id"] + "";
-                    SqlCommand scm1 = new SqlCommand(com3, con);
-                    con.Open();
-                    SqlDataReader sdr1 = scm1.ExecuteReader();
-                    sdr1.Read();
-                    AssignPartyDrp.SelectedItem.Value = sdr1["partyId"].ToString();
-                    AssignPartyDrp.SelectedItem.Text = Request.QueryString["paName"];
+                        string com3 = "select partyId from assignProduct where assignId=" + Request.QueryString["id"] + "";
+                        SqlCommand scm1 = new SqlCommand(com3, con);
+                        con.Open();
+                        SqlDataReader sdr1 = scm1.ExecuteReader();
+                        sdr1.Read();
+                        AssignPartyDrp.SelectedItem.Value = sdr1["partyId"].ToString();
+                        AssignPartyDrp.SelectedItem.Text = Request.QueryString["paName"];
                     }
-                    catch(Exception em)
+                    catch (Exception em)
                     {
-                       Label2.Text= em.Message;
+                        Label2.Text = em.Message;
                         Label2.ForeColor = System.Drawing.Color.Red;
                     }
                     finally
                     {
-                    con.Close();
+                        con.Close();
                     }
                     saveBtnId.Visible = false;
                     UpdateBtnId.Visible = true;
@@ -157,6 +157,22 @@ namespace Exercise2.Assign_Party
         protected void cancelBtnId_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/AssignParty/assignParty.aspx");
+        }
+
+        protected void AssignPartyDrp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(CS);
+            string com1 = "select id,productName from product where id not in(Select productId from assignProduct where partyId ="+AssignPartyDrp.SelectedItem.Value+")";
+            SqlDataAdapter adpt1 = new SqlDataAdapter(com1, con);
+            DataTable dt1 = new DataTable();
+            adpt1.Fill(dt1);
+            AssignProductDrp.DataSource = dt1;
+            //AssignProductDrp.DataBind();
+            AssignProductDrp.DataTextField = "productName";
+            AssignProductDrp.DataValueField = "id";
+            AssignProductDrp.DataBind();
+            AssignProductDrp.Items.Insert(0, new ListItem("Select Party", "0"));
+
         }
     }
 }
