@@ -14,7 +14,7 @@
         <asp:Label CssClass="productNam" ID="ProductName" runat="server" Text="Product Name: "></asp:Label>
         </div>
         <div class="productDrpCls">
-            <asp:DropDownList CssClass="AssignProduct" ID="AssignProductDrp" runat="server">
+            <asp:DropDownList CssClass="AssignProduct" ID="AssignProductDrp" runat="server" AutoPostBack="true">
                <asp:ListItem Value="SelectProduct" >Select Product</asp:ListItem>
             </asp:DropDownList>
         </div>

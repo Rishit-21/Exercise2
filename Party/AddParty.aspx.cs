@@ -6,11 +6,13 @@ using System.Web.UI;
 using System.Data.SqlClient;
 using System.Data;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 namespace Exercise2
 {
     public partial class AddParty : System.Web.UI.Page
     {
+        public  string CS = ConfigurationManager.ConnectionStrings["partyProduct"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -35,7 +37,7 @@ namespace Exercise2
             SqlConnection con = null;
             try
             {
-                con = new SqlConnection("data source=.\\SQLEXPRESS;database=partyProduct; integrated security=SSPI");
+                con = new SqlConnection(CS);
                 SqlCommand scm = new SqlCommand("Select partyName from party where partyName='"+addPartyTxt.Text+"'",con);
                 con.Open();
                 SqlDataReader sdr  = scm.ExecuteReader();
@@ -79,7 +81,7 @@ namespace Exercise2
 
             try
             {
-                con = new SqlConnection("data source=.\\SQLEXPRESS;database=partyProduct; integrated security=SSPI");
+                con = new SqlConnection(CS);
                 SqlCommand scm = new SqlCommand("Select partyName from party where partyName='" + addPartyTxt.Text + "'", con);
                 con.Open();
                 SqlDataReader sdr = scm.ExecuteReader();
@@ -96,8 +98,10 @@ namespace Exercise2
             {
                 try
                 {
-                    con = new SqlConnection("data source=.\\SQLEXPRESS;database=partyProduct; integrated security=SSPI");
-                    SqlCommand scm1 = new SqlCommand("insert into party(partyName) values('" + addPartyTxt.Text + "')", con);
+                    con = new SqlConnection(CS);
+                    SqlCommand scm1 = new SqlCommand("spParty", con);
+                    scm1.CommandType = System.Data.CommandType.StoredProcedure;
+                    scm1.Parameters.AddWithValue("@partyName", addPartyTxt.Text);
                     con.Open();
                     scm1.ExecuteNonQuery();
                     PartyAddMsg.Text = "Added Succesfully";

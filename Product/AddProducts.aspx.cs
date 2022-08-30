@@ -6,11 +6,13 @@ using System.Web.UI;
 using System.Data.SqlClient;
 using System.Data;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 namespace Exercise2
 {
     public partial class AddProducts : System.Web.UI.Page
     {
+        public string CS = ConfigurationManager.ConnectionStrings["partyProduct"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -31,7 +33,7 @@ namespace Exercise2
             SqlConnection con = null;
             try
             {
-                con = new SqlConnection("data source=.\\SQLEXPRESS;database=partyProduct; integrated security=SSPI");
+                con = new SqlConnection(CS);
                 SqlCommand scm = new SqlCommand("Select productName from product where productName='" + addProductTxt.Text + "'", con);
                 con.Open();
                 SqlDataReader sdr = scm.ExecuteReader();
@@ -48,7 +50,7 @@ namespace Exercise2
                 con.Close();
                 try
                 {
-                    con = new SqlConnection("data source=.\\SQLEXPRESS;database=partyProduct; integrated security=SSPI");
+                    con = new SqlConnection(CS);
                     SqlCommand scm = new SqlCommand("insert into product(productName) values('" + addProductTxt.Text + "')", con);
                     con.Open();
                     scm.ExecuteNonQuery();
@@ -72,7 +74,7 @@ namespace Exercise2
             SqlConnection con = null;
             try
             {
-                con = new SqlConnection("data source=.\\SQLEXPRESS;database=partyProduct; integrated security=SSPI");
+                con = new SqlConnection(CS);
                 SqlCommand scm = new SqlCommand("Select productName from product where partyName='" + addProductTxt.Text + "'", con);
                 con.Open();
                 SqlDataReader sdr = scm.ExecuteReader();

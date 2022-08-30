@@ -6,11 +6,14 @@ using System.Web.UI;
 using System.Data.SqlClient;
 using System.Data;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 namespace Exercise2.ProductRateListFldr
 {
     public partial class addProductRate : System.Web.UI.Page
     {
+
+        public string CS = ConfigurationManager.ConnectionStrings["partyProduct"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -18,7 +21,7 @@ namespace Exercise2.ProductRateListFldr
                 SqlConnection con = null;
                 try
                 {
-                    con = new SqlConnection("data source=.\\SQLEXPRESS;database=partyProduct; integrated security=SSPI");
+                    con = new SqlConnection(CS);
                     string com1 = "select id,productName from product where id not in(select productId from productRate) ";
                     SqlDataAdapter adpt1 = new SqlDataAdapter(com1, con);
                     DataTable dt1 = new DataTable();
@@ -94,12 +97,13 @@ namespace Exercise2.ProductRateListFldr
             SqlConnection con = null;
             try
             {
-                con = new SqlConnection("data source =.\\SQLEXPRESS; database = partyProduct; integrated security = SSPI");
+                con = new SqlConnection(CS);
                 SqlCommand cm = new SqlCommand("insert into productRate(productId,rate,dateOFRate) values("+proId+","+ decimal.Parse(addProductRateTxtId.Text) + ",'" + addRateDateID.Text + "')", con);
                 con.Open();
                 cm.ExecuteNonQuery();
                 Label1.Text = "Added succesfully";
                 Label1.ForeColor = System.Drawing.Color.Green;
+               
             }
             catch (Exception em)
             {
@@ -109,6 +113,7 @@ namespace Exercise2.ProductRateListFldr
             finally
             {
                 con.Close();
+                Response.Redirect("~/ProductRateListFldr/productRateList.aspx");
             }
 
         }
@@ -119,7 +124,7 @@ namespace Exercise2.ProductRateListFldr
             SqlConnection con = null;
             try
             {
-                con = new SqlConnection("data source =.\\SQLEXPRESS; database = partyProduct; integrated security = SSPI");
+                con = new SqlConnection(CS);
                 SqlCommand cm = new SqlCommand("update productRate set productId=" + proId + ",rate=" + decimal.Parse(addProductRateTxtId.Text) + ",dateOfRate='" + addRateDateID.Text + "'where productRateId="+Request.QueryString["id"]+"",con);
                 con.Open();
                 cm.ExecuteNonQuery();
@@ -134,6 +139,7 @@ namespace Exercise2.ProductRateListFldr
             finally
             {
                 con.Close();
+                Response.Redirect("~/ProductRateListFldr/productRateList.aspx");
             }
         }
 

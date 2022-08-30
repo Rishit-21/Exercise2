@@ -6,17 +6,18 @@ using System.Web.UI;
 using System.Data.SqlClient;
 using System.Data;
 using System.Web.UI.WebControls;
-
+using System.Configuration;
 namespace Exercise2.Assign_Party
 {
     public partial class AddAssign : System.Web.UI.Page
     {
+      public  string CS = ConfigurationManager.ConnectionStrings["partyProduct"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
 
-                SqlConnection con = new SqlConnection("data source=.\\SQLEXPRESS;database=partyProduct; integrated security=SSPI");
+                SqlConnection con = new SqlConnection(CS);
                 try
                 {
                     string com = "select id,partyName from party";
@@ -110,7 +111,7 @@ namespace Exercise2.Assign_Party
             SqlConnection con = null;
             try
             {
-                con = new SqlConnection("data source =.\\SQLEXPRESS; database = partyProduct; integrated security = SSPI");
+                con = new SqlConnection(CS);
                 SqlCommand scm = new SqlCommand("update assignProduct set partyId=" + paId + ", productId=" + prId + "where assignId=" + Request.QueryString["id"], con);
                 con.Open();
                 scm.ExecuteNonQuery();
@@ -135,7 +136,7 @@ namespace Exercise2.Assign_Party
             SqlConnection con = null;
             try
             {
-                con = new SqlConnection("data source =.\\SQLEXPRESS; database = partyProduct; integrated security = SSPI");
+                con = new SqlConnection(CS);
                 SqlCommand scm = new SqlCommand("insert into assignProduct(partyId,productId) values(" + paId + "," + prId + ")", con);
                 con.Open();
                 scm.ExecuteNonQuery();

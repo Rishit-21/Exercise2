@@ -74,7 +74,12 @@
     <Content Include="App_Themes\ProductRateListpage\StyleSheet1.css" />
     <Content Include="AssignParty\AddAssign.aspx" />
     <Content Include="AssignParty\assignParty.aspx" />
+    <Content Include="Content\sweetalert\bootstrap-sweetalert.png" />
+    <Content Include="Content\sweetalert\docs.css" />
+    <Content Include="Content\sweetalert\sweet-alert.css" />
+    <Content Include="Content\sweetalert\thumbs-up.jpg" />
     <Content Include="Invoice\addInvoice.aspx" />
+    <Content Include="JavaScript1.js" />
     <Content Include="Party\AddParty.aspx" />
     <Content Include="ProductRateListFldr\addProductRate.aspx" />
     <Content Include="ProductRateListFldr\productRateList.aspx" />
@@ -162,9 +167,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\sweetalert\sweet-alert.less" />
+    <Content Include="Content\sweetalert\sweet-alert-combine.less" />
+    <Content Include="Content\sweetalert\sweet-alert-animations.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
     <Content Include="partyProduct.bak" />
+    <Content Include="Views\Sweet\Alert.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -172,7 +183,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

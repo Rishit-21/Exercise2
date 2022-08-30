@@ -6,16 +6,18 @@ using System.Web.UI;
 using System.Data.SqlClient;
 using System.Data;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 namespace Exercise2.Invoice
 {
     public partial class addInvoice : System.Web.UI.Page
     {
+        public string CS = ConfigurationManager.ConnectionStrings["partyProduct"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-            SqlConnection con = new SqlConnection("data source=.\\SQLEXPRESS;database=partyProduct; integrated security=SSPI");
+            SqlConnection con = new SqlConnection(CS);
             //////--------- for party drop down------------
             try
             {
@@ -40,17 +42,12 @@ namespace Exercise2.Invoice
                     con.Close();
                 }
                 /////////----- for product drop down--------
-             
-                   
-               
-
-
             }
         }
 
         protected void AssignPartyDrp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("data source=.\\SQLEXPRESS;database=partyProduct; integrated security=SSPI");
+            SqlConnection con = new SqlConnection(CS);
             try
             {
                 string com = "Select productName,pr.productId as proId from assignProduct ,product pro,productRate pr where pro.id=assignProduct.productId and partyId=" + AssignPartyDrp.SelectedItem.Value + " and pr.productId=pro.id";
@@ -78,7 +75,7 @@ namespace Exercise2.Invoice
 
         protected void AssignProductDrp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("data source=.\\SQLEXPRESS;database=partyProduct; integrated security=SSPI");
+            SqlConnection con = new SqlConnection(CS);
             try
             {
                 string com = "select rate from productRate where productId = "+AssignProductDrp.SelectedItem.Value+" ";
@@ -104,7 +101,7 @@ namespace Exercise2.Invoice
         protected void AddToInvoiceBtnId_Click(object sender, EventArgs e)
         {
            
-            SqlConnection  con = new SqlConnection("data source =.\\SQLEXPRESS; database = partyProduct; integrated security = SSPI");
+            SqlConnection  con = new SqlConnection(CS);
             AssignPartyDrp.Enabled = false;
             AssignPartyDrp.ForeColor = System.Drawing.Color.DarkGray;
 
@@ -129,7 +126,7 @@ namespace Exercise2.Invoice
             
             try
             {
-                con = new SqlConnection("data source =.\\SQLEXPRESS; database = partyProduct; integrated security = SSPI");
+                con = new SqlConnection(CS);
                 SqlDataAdapter sde = new SqlDataAdapter("Select invoiceId,partyName,productName,rateOfProduct,quantity,total from invoice,party,product where partyId=party.id and productId=product.id and partyId="+AssignPartyDrp.SelectedItem.Value+"", con);
                 con.Open();
 
